@@ -7,10 +7,13 @@ ENV APACHE_RUN_USER="www-data"
 ENV APACHE_RUN_GROUP="www-data"
 ENV APACHE_LOG_DIR="var/log/apache2"
 
-COPY index.html /var/www/html/
+ADD index.html /var/www/html/
 
 LABEL description="Webserver"
 LABEL version="1.0.0"
+
+USER root
+WORKDIR /var/www/html/
 
 VOLUME /var/www/html/
 EXPOSE 80
